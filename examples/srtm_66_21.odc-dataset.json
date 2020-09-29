@@ -1,0 +1,69 @@
+{
+  "$schema": "https://schemas.opendatacube.org/dataset",
+  "id": "ac4d380d-75bb-570c-b174-1d2caf604dd6",
+  "crs": "epsg:4326",
+  "grids": {
+    "default": {
+      "shape": [
+        6000,
+        6000
+      ],
+      "transform": [
+        0.0008333333333333334,
+        0.0,
+        145.0,
+        0.0,
+        -0.0008333333333333334,
+        -40.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "product": {
+    "name": "srtm"
+  },
+  "label": "srtm_66_21",
+  "properties": {
+    "eo:platform": "srtm",
+    "datetime": "2020-06-30T12:00Z",
+    "proj:epsg": 4326,
+    "odc:processing_datetime": "2020-06-30T12:00Z",
+    "odc:file_format": "GeoTIFF"
+  },
+  "measurements": {
+    "elevation": {
+      "path": "srtm_66_21.tif",
+      "grid": "g0.000833333m"
+    }
+  },
+  "lineage": {},
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          145.0,
+          -45.0
+        ],
+        [
+          145.0,
+          -40.0
+        ],
+        [
+          150.0,
+          -40.0
+        ],
+        [
+          150.0,
+          -45.0
+        ],
+        [
+          145.0,
+          -45.0
+        ]
+      ]
+    ]
+  }
+}

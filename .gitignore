@@ -1,0 +1,4 @@
+examples/srtm
+examples/test_input
+.vscode
+__pycache__

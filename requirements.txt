@@ -1,0 +1,9 @@
+--pre
+--extra-index-url https://packages.dea.ga.gov.au/
+odc-index
+click
+jinja2
+pystac
+rasterio
+pyproj
+rio_cogeo

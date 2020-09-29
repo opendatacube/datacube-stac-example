@@ -1,0 +1,15 @@
+
+name: srtm
+description: Auto-generated product example for srtm
+metadata_type: eo3
+
+metadata:
+  product:
+    name: srtm
+
+measurements:
+- name: 'elevation'
+  units: '1'
+  dtype: 'int16'
+  nodata: -32768.0
+...
