@@ -45,17 +45,18 @@ def get_datetime(raster):
 
 def get_geometry(bbox, from_crs):
     transformer = Transformer.from_crs(from_crs, 4326)
-    bbox_projected = [
+    bbox_lonlat = [
         [bbox.left, bbox.bottom],
         [bbox.left, bbox.top],
         [bbox.right, bbox.top],
         [bbox.right, bbox.bottom],
         [bbox.left, bbox.bottom],
     ]
-    return {
+    geometry = {
         "type": "Polygon",
-        "coordinates": [list(transformer.itransform(bbox_projected))],
+        "coordinates": [list(transformer.itransform(bbox_lonlat))],
     }
+    return geometry, bbox_lonlat
 
 
 def convert_to_cog(raster, validate=True):
@@ -71,22 +72,29 @@ def create_stac(raster, platform, band_name, default_date):
     transform = None
     shape = None
     crs = None
-    bbox = None
 
     with rasterio.open(raster) as dataset:
         transform = dataset.transform
         shape = dataset.shape
         crs = dataset.crs.to_epsg()
-        bbox = dataset.bounds
+        bounds = dataset.bounds
 
     date_string = default_date
     if not date_string:
         date_string = get_datetime(raster)
 
+    geometry, bbox = get_geometry(bounds, crs),
+
     stac_dict = {
         "id": raster.stem.replace(" ", "_"),
+        "type": "Feature",
+        "stac_version": "1.0.0-beta.2",
+        "stac_extensions": [
+            "proj"
+        ],
         "properties": {"platform": platform, "datetime": date_string, "proj:epsg": crs},
-        "geometry": get_geometry(bbox, crs),
+        "bbox": bbox,
+        "geometry": geometry,
         "assets": {
             band_name: {
                 "title": f"Data file for {band_name}",
