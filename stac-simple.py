@@ -82,9 +82,7 @@ def create_stac(raster, platform, band_name, default_date):
     date_string = default_date
     if not date_string:
         date_string = get_datetime(raster)
-
-    geometry, bbox = get_geometry(bounds, crs),
-
+    geometry, bbox = get_geometry(bounds, crs)
     stac_dict = {
         "id": raster.stem.replace(" ", "_"),
         "type": "Feature",
