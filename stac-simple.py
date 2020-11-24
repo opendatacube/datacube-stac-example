@@ -38,8 +38,10 @@ measurements:
 
 def get_datetime(raster):
     file_name = raster.stem
-    date_string = file_name.split("_")[3]
+    date_string = file_name[-21:-9]
+    #date_string = file_name.split("_")[3]
     date = datetime.datetime.strptime(date_string, "%Y%m%d%H%M")
+    date = date - datetime.timedelta(hours=11)
     return date.isoformat() + "Z"
 
 
