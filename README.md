@@ -1,5 +1,13 @@
 # ODC Stacifier
 
+
+NOTE! This is just a proof of concept.
+
+A far better implementation is [Rio-STAC](https://github.com/developmentseed/rio-stac).
+
+
+
+
 A super simple example of creating a STAC metadata file for some datasets (spatial rasters).
 
 This tool also creates a minimum viable EO3 product and dataset definitions.
